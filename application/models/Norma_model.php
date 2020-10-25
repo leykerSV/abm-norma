@@ -57,6 +57,8 @@ class Norma_model extends CI_Model{
         $this->db->set('nrocaja', $datos['nrocaja']);
         $this->db->set('nroorden', $datos['nroorden']);
         $this->db->set('observaciones', $datos['observaciones']);
+        $this->db->set('archivo', $datos['archivo']);
+        $this->db->set('archivoord', $datos['archivoord']);
         $this->db->insert('Normas');
         return true;
     }
