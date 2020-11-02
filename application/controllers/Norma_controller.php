@@ -14,6 +14,12 @@ class Norma_controller extends CI_Controller {
 		$this->load->view('Norma_view',$datos);
     }
 
+    public function index2()	{
+        $datos['tematican1'] = $this->Norma_model->get_tematican1();
+        $datos['tiponorma'] = $this->Norma_model->get_tiponorma();
+		$this->load->view('Norma_view');
+    }
+
     public function get_tematican2() {
         $data_post = $this->input->post();
         $datos = $this->Norma_model->get_tematican2($data_post['idtematican1']);
@@ -23,27 +29,27 @@ class Norma_controller extends CI_Controller {
     public function crea_norma() {
         $this->form_validation->set_rules('numnorma', 'N° Norma', 'required|min_length[4]|numeric');
         $this->form_validation->set_rules('tiponorma', 'Tipo de Norma', 'required');
-        $this->form_validation->set_rules('expedientechm', 'Expediente HCM', 'required');
-        $this->form_validation->set_rules('expedientedem', 'Expediente DEM', 'required');
+        //$this->form_validation->set_rules('expedientechm', 'Expediente HCM', 'required');
+        //$this->form_validation->set_rules('expedientedem', 'Expediente DEM', 'required');
         $this->form_validation->set_rules('tematican1', 'Tematica de Nivel 1', 'required');
         $this->form_validation->set_rules('tematican2', 'Tematica de Nivel 2', 'required');
-        $this->form_validation->set_rules('fechasancion', 'Fecha de Sanción', 'required');
-        $this->form_validation->set_rules('fechapromulgacion', 'Fecha de Promulgación', 'required');
-        $this->form_validation->set_rules('origen', 'Origen', 'required');
-        $this->form_validation->set_rules('autor', 'Autor', 'required');
-        $this->form_validation->set_rules('contenido', 'Contenido', 'required');
-        $this->form_validation->set_rules('caracter', 'Caracter', 'required');
-        $this->form_validation->set_rules('alcance', 'Alcance', 'required');
-        $this->form_validation->set_rules('nrocaja', 'N° Caja', 'required|min_length[4]|numeric');
-        $this->form_validation->set_rules('nroorden', 'N° Orden', 'required|min_length[4]|numeric');
-        $this->form_validation->set_rules('observaciones', 'Observaciones', 'required');
-        $this->form_validation->set_rules('nrocaja', 'N° Caja', 'required');
+        //$this->form_validation->set_rules('fechasancion', 'Fecha de Sanción', 'required');
+        //$this->form_validation->set_rules('fechapromulgacion', 'Fecha de Promulgación', 'required');
+        //$this->form_validation->set_rules('origen', 'Origen', 'required');
+        //$this->form_validation->set_rules('autor', 'Autor', 'required');
+        //$this->form_validation->set_rules('contenido', 'Contenido', 'required');
+        //$this->form_validation->set_rules('caracter', 'Caracter', 'required');
+        //$this->form_validation->set_rules('alcance', 'Alcance', 'required');
+        //$this->form_validation->set_rules('nrocaja', 'N° Caja', 'required|min_length[4]|numeric');
+        //$this->form_validation->set_rules('nroorden', 'N° Orden', 'required|min_length[4]|numeric');
+        //$this->form_validation->set_rules('observaciones', 'Observaciones', 'required');
+        //$this->form_validation->set_rules('nrocaja', 'N° Caja', 'required');
         
         chdir('..');
         chdir('normas');
         $directorio=getcwd()."/";
         if ($_FILES['archivo']['name']==null){
-                
+            $nombrearchivo="";        
         }else{
             $fichero_subido = $directorio . basename($_FILES['archivo']['name']);
             $nombrearchivo=basename($_FILES['archivo']['name']);
@@ -51,7 +57,7 @@ class Norma_controller extends CI_Controller {
         }
 
         if ($_FILES['archivoord']['name']==null){
-                
+            $nombrearchivoord="";        
         }else{
             $fichero_subido = $directorio . basename($_FILES['archivoord']['name']);
             $nombrearchivoord=basename($_FILES['archivoord']['name']);
@@ -65,6 +71,7 @@ class Norma_controller extends CI_Controller {
             $resp1 = $this->Norma_model->insert_norma($_POST);
             $resp2 = $this->Norma_model->insert_normaestructuratematica($_POST['numnorma'], $_POST['tiponorma'],$_POST['tematican1'], $_POST['tematican2']);
             echo 'Norma Ingresada con exito';
+            $this->index2();
         }else{
             $this->index();
         }        

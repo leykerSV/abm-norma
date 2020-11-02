@@ -110,12 +110,22 @@
                         class="form-text"><?php echo form_error('autor', '<div class="text-danger">', '</div>'); ?></small>
                 </div>
                 <div class="form-group col-sm-6">
-                    <input type="text" class="form-control" name="caracter" placeholder="Caracter">
+                    Caracter
+                    <select class="form-control" name="caracter" placeholder="Caracter">
+                        <option value= "" ></option>
+                        <option value= "PERMANENTE" >PERMANENTE</option>
+                        <option value= "TRANSITORIA" >TRANSITORIA</option>
+                    </select>
                     <small
                         class="form-text"><?php echo form_error('caracter', '<div class="text-danger">', '</div>'); ?></small>
                 </div>
                 <div class="form-group col-sm-6">
-                    <input type="text" class="form-control" name="alcance" placeholder="Alcance">
+                    Alcance:
+                    <select class="form-control" name="caracter" placeholder="Caracter">
+                        <option value= "" ></option>
+                        <option value= "PERMANENTE" >PERMANENTE</option>
+                        <option value= "TEMPORAL" >TEMPORAL</option>
+                    </select>
                     <small
                         class="form-text"><?php echo form_error('alcance', '<div class="text-danger">', '</div>'); ?></small>
                 </div>
@@ -144,10 +154,12 @@
             </div>
 
             <div class="form-group">
+                Archivo:
                 <input id="archivo" name="archivo" type="file" placeholder="Archivo" class="form-control">
                 <?php echo form_error('archivo'); ?>
             </div>
             <div class="form-group">
+                Archivo Ordenado:
                 <input id="archivoord" name="archivoord" type="file" placeholder="Archivo Ordenanza" class="form-control">
                 <?php echo form_error('archivoord'); ?>
             </div>
