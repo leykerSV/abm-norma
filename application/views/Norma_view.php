@@ -121,7 +121,7 @@
                 </div>
                 <div class="form-group col-sm-6">
                     Alcance:
-                    <select class="form-control" name="caracter" placeholder="Caracter">
+                    <select class="form-control" name="alcance" placeholder="Alcance">
                         <option value= "" ></option>
                         <option value= "PERMANENTE" >PERMANENTE</option>
                         <option value= "TEMPORAL" >TEMPORAL</option>
@@ -154,12 +154,12 @@
             </div>
 
             <div class="form-group">
-                Archivo:
+            	Archivo:
                 <input id="archivo" name="archivo" type="file" placeholder="Archivo" class="form-control">
                 <?php echo form_error('archivo'); ?>
             </div>
             <div class="form-group">
-                Archivo Ordenado:
+            	Archivo Ordenado:
                 <input id="archivoord" name="archivoord" type="file" placeholder="Archivo Ordenanza" class="form-control">
                 <?php echo form_error('archivoord'); ?>
             </div>
@@ -180,10 +180,10 @@
     </div>
     <script type="text/javascript">
     $('#datetimepicker1').datetimepicker({
-        format: 'YYYY-MM-DD'
+        format: 'DD-MM-YYYY'
     });
     $('#datetimepicker2').datetimepicker({
-        format: 'YYYY-MM-DD'
+        format: 'DD-MM-YYYY'
     });
     </script>
 

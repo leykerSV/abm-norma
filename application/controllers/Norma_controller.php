@@ -14,12 +14,6 @@ class Norma_controller extends CI_Controller {
 		$this->load->view('Norma_view',$datos);
     }
 
-    public function index2()	{
-        $datos['tematican1'] = $this->Norma_model->get_tematican1();
-        $datos['tiponorma'] = $this->Norma_model->get_tiponorma();
-		$this->load->view('Norma_view');
-    }
-
     public function get_tematican2() {
         $data_post = $this->input->post();
         $datos = $this->Norma_model->get_tematican2($data_post['idtematican1']);
@@ -27,7 +21,7 @@ class Norma_controller extends CI_Controller {
     }
     
     public function crea_norma() {
-        $this->form_validation->set_rules('numnorma', 'N° Norma', 'required|min_length[4]|numeric');
+        $this->form_validation->set_rules('numnorma', 'N° Norma', 'required|min_length[2]|numeric');
         $this->form_validation->set_rules('tiponorma', 'Tipo de Norma', 'required');
         //$this->form_validation->set_rules('expedientechm', 'Expediente HCM', 'required');
         //$this->form_validation->set_rules('expedientedem', 'Expediente DEM', 'required');
@@ -49,7 +43,7 @@ class Norma_controller extends CI_Controller {
         chdir('normas');
         $directorio=getcwd()."/";
         if ($_FILES['archivo']['name']==null){
-            $nombrearchivo="";        
+            $nombrearchivo="";         
         }else{
             $fichero_subido = $directorio . basename($_FILES['archivo']['name']);
             $nombrearchivo=basename($_FILES['archivo']['name']);
@@ -57,7 +51,7 @@ class Norma_controller extends CI_Controller {
         }
 
         if ($_FILES['archivoord']['name']==null){
-            $nombrearchivoord="";        
+            $nombrearchivoord="";	 	       
         }else{
             $fichero_subido = $directorio . basename($_FILES['archivoord']['name']);
             $nombrearchivoord=basename($_FILES['archivoord']['name']);
@@ -67,13 +61,27 @@ class Norma_controller extends CI_Controller {
         $_POST['archivo']=$nombrearchivo;
         $_POST['archivoord']=$nombrearchivoord;
         
+        if($_POST['fechasancion']!=""){
+            $inicio = strtotime($_POST['fechasancion']);
+            $fff = date('Y-m-d',$inicio);
+            $_POST['fechasancion']=$fff;
+        }
+
+        if($_POST['fechapromulgacion']!=""){
+            $inicio1 = strtotime($_POST['fechapromulgacion']);
+            $fff1 = date('Y-m-d',$inicio1);
+            $_POST['fechapromulgacion']=$fff1;
+        } 
+        
         if($this->form_validation->run()){            
             $resp1 = $this->Norma_model->insert_norma($_POST);
             $resp2 = $this->Norma_model->insert_normaestructuratematica($_POST['numnorma'], $_POST['tiponorma'],$_POST['tematican1'], $_POST['tematican2']);
             echo 'Norma Ingresada con exito';
-            $this->index2();
+            echo '<br />';
+            echo '<a href="http://abm-norma.concejosantotome.gob.ar/">Volver al inicio de Carga</a>';
         }else{
             $this->index();
         }        
 	}
+	
 }
