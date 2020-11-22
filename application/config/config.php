@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
-//$config['base_url'] = 'http://digesto.concejosantotome.gob.ar/';
+//$config['base_url'] = 'localhost/ab';
+$config['base_url'] = 'http://abm-norma.concejosantotome.gob.ar/';
 
 /*
 |--------------------------------------------------------------------------

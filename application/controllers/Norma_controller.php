@@ -3,12 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Norma_controller extends CI_Controller {
     public function __construct(){
+
         parent::__construct();
         $this->load->model('Norma_model');
         $this->config->set_item('language', 'spanish');
     }
 
     public function index()	{
+        $this->check_log();
         $datos['tematican1'] = $this->Norma_model->get_tematican1();
         $datos['tiponorma'] = $this->Norma_model->get_tiponorma();
 		$this->load->view('Norma_view',$datos);
@@ -21,6 +23,7 @@ class Norma_controller extends CI_Controller {
     }
     
     public function crea_norma() {
+        $this->check_log();
         $this->form_validation->set_rules('numnorma', 'N° Norma', 'required|min_length[2]|numeric');
         $this->form_validation->set_rules('tiponorma', 'Tipo de Norma', 'required');
         //$this->form_validation->set_rules('expedientechm', 'Expediente HCM', 'required');
@@ -82,6 +85,18 @@ class Norma_controller extends CI_Controller {
         }else{
             $this->index();
         }        
-	}
+    }
+    
+    /**
+    * Chequea que la sesión esté iniciada
+    * Usarla antes de ejecutar un método de un controller
+    * 
+    * @author Leyker
+    */
+    private function check_log (){
+        if($this->session->userdata('logueado') == FALSE){
+            redirect(base_url(), 'refresh');    
+        }
+    }
 	
 }
