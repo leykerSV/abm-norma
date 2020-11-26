@@ -68,20 +68,24 @@ class Norma_controller extends CI_Controller {
             $inicio = strtotime($_POST['fechasancion']);
             $fff = date('Y-m-d',$inicio);
             $_POST['fechasancion']=$fff;
+        } else {
+            $_POST['fechasancion']=NULL;   
         }
 
         if($_POST['fechapromulgacion']!=""){
             $inicio1 = strtotime($_POST['fechapromulgacion']);
             $fff1 = date('Y-m-d',$inicio1);
             $_POST['fechapromulgacion']=$fff1;
-        } 
+        } else {
+            $_POST['fechapromulgacion']=NULL;   
+        }
         
         if($this->form_validation->run()){            
             $resp1 = $this->Norma_model->insert_norma($_POST);
             $resp2 = $this->Norma_model->insert_normaestructuratematica($_POST['numnorma'], $_POST['tiponorma'],$_POST['tematican1'], $_POST['tematican2']);
             echo 'Norma Ingresada con exito';
             echo '<br />';
-            echo '<a href="http://abm-norma.concejosantotome.gob.ar/">Volver al inicio de Carga</a>';
+            echo '<a href="https://abm-norma.concejosantotome.gob.ar/index.php/abmnorma">Volver al inicio de Carga</a>';
         }else{
             $this->index();
         }        

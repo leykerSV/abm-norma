@@ -1,4 +1,3 @@
-Concejo%2020AbM
 <div class="container">
   <div class="frame">
 

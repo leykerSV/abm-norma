@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = 'localhost/ab';
-$config['base_url'] = 'http://abm-norma.concejosantotome.gob.ar/';
+$config['base_url'] = 'https://abm-norma.concejosantotome.gob.ar/';
 
 /*
 |--------------------------------------------------------------------------

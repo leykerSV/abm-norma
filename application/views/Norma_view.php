@@ -90,24 +90,13 @@
                     <small
                         class="form-text"><?php echo form_error('fechasancion', '<div class="text-danger">', '</div>'); ?></small>
                     
-                    <!--<input type="text" class="form-control datetimepicker-input" id="datetimepicker1"
-                        data-toggle="datetimepicker" data-target="#datetimepicker1" name="fechasancion"
-                        placeholder="Fecha de Sanción" />
-                    <small
-                        class="form-text"><?php //echo form_error('fechasancion', '<div class="text-danger">', '</div>'); ?></small>-->
                 </div>
                 <div class="form-group col-sm-6">
-                    <input type=" text" class="form-control" name="fechapromulgacion" placeholder="Fecha de Sancion">
+                    <input type=" text" class="form-control" name="fechapromulgacion" placeholder="Fecha de Promulgacion">
                     <small
                         class="form-text"><?php echo form_error('fechapromulgacion', '<div class="text-danger">', '</div>'); ?></small>
                     
-                    
-                    
-                    <!--<input type="text" class="form-control datetimepicker-input" id="datetimepicker2"
-                        data-toggle="datetimepicker" data-target="#datetimepicker2" name="fechapromulgacion"
-                        placeholder="Fecha de Promulgación" />
-                    <small
-                        class="form-text"><?php //echo form_error('fechapromulgacion', '<div class="text-danger">', '</div>'); ?></small>-->
+
                 </div>
                 <div class="form-group col-sm-6">
                     <input type=" text" class="form-control" name="origen" placeholder="Origen">
@@ -174,34 +163,17 @@
                 <?php echo form_error('archivoord'); ?>
             </div>
 
-            <!--
-            <div class="custom-file mb-3">
-                <input type="file" class="custom-file-input" id="validatedCustomFile">
-                <label class="custom-file-label" for="validatedCustomFile">Agregar Archivo</label>
-            </div>
-            <div class="custom-file mb-3">
-                <input type="file" class="custom-file-input" id="validatedCustomFile">
-                <label class="custom-file-label" for="validatedCustomFile">Agregar Archivo Ord</label>
-            </div>
-            -->
             <button type="submit" class="btn btn-primary">Crear Norma</button>
         <!--</form>-->
         <?php echo form_close(); ?>
     </div>
-    <script type="text/javascript">
-    $('#datetimepicker1').datetimepicker({
-        format: 'DD-MM-YYYY'
-    });
-    $('#datetimepicker2').datetimepicker({
-        format: 'DD-MM-YYYY'
-    });
-    </script>
+
 
     <script>
     $("#tematican1").change(function() {
         var idtematican1 = $(this).children("option:selected").val();
         $.ajax({
-            url: "index.php/Norma_controller/get_tematican2",
+            url: "https://abm-norma.concejosantotome.gob.ar/index.php/Norma_controller/get_tematican2",
             method: 'post',
             data: {
                 idtematican1: idtematican1
