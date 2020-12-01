@@ -28,8 +28,10 @@
 </head>
 
 <body>
+
     <pre><?php //print_r($tiponorma); ?></pre>
     <div class="container bg-warning">
+        <?php echo anchor('relaciones', 'Click aquí para generar Relaciones', 'title="Relaciones"'); ?>
         <?php //echo validation_errors(); ?>
         <h3 class="text-white text-center">~ Formulario de Norma ~</h3>
         <!--<form action="<?php //base_url() ?>Norma_controller/crea_norma" method="post">-->
