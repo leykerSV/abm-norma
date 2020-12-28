@@ -29,15 +29,14 @@
 
 <body>
 
+
+
     <pre><?php //print_r($tiponorma); ?></pre>
     <div class="container bg-warning">
-        <?php echo anchor('relaciones', 'Click aquí para generar Relaciones', 'title="Relaciones"'); ?>
-        <br />
-        <?php echo anchor('editar', 'Click aquí para Editar una Norma', 'title="Editar"'); ?>
         <?php //echo validation_errors(); ?>
         <h3 class="text-white text-center">~ Formulario de Norma ~</h3>
         <!--<form action="<?php //base_url() ?>Norma_controller/crea_norma" method="post">-->
-        <?php echo form_open_multipart('Norma_controller/crea_norma/',array("class"=>"form-group")); ?>
+        <?php echo form_open_multipart('Norma_controller/edit_norma/',array("class"=>"form-group")); ?>
             <div class="row">
                 <div class="form-group col-sm-6">
                     <input type="number" class="form-control" name="numnorma" placeholder="N° Norma">

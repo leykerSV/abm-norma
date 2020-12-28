@@ -42,6 +42,63 @@ class Norma_model extends CI_Model{
         }
     }
 
+    public function get_norma($idnorma){
+        $this->db->select('*');
+        $this->db->from('normas');
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        }else{
+            return null;
+        }
+    }
+
+    public function get_norma1($idnorma,$tipo){
+        $this->db->select('*');
+        $this->db->from('Normas');
+        $this->db->where('numero = '.$idnorma);
+        $this->db->where('tipo = '.$tipo);
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        }else{
+            return null;
+        }
+    }
+
+    public function edit_norma($datos){
+        $this->db->set('numero', $datos['numnorma']);
+        $this->db->set('tipo', $datos['tiponorma']);
+        $this->db->set('expedientechm', $datos['expedientechm']);
+        $this->db->set('expedientedem', $datos['expedientedem']);
+        $this->db->set('fechasancion', $datos['fechasancion']);
+        $this->db->set('fechapromulgacion', $datos['fechapromulgacion']);
+        $this->db->set('origen', $datos['origen']);
+        $this->db->set('autor', $datos['autor']);
+        $this->db->set('contenido', $datos['contenido']);
+        $this->db->set('caracter', $datos['caracter']);
+        $this->db->set('alcance', $datos['alcance']);
+        $this->db->set('nrocaja', $datos['nrocaja']);
+        $this->db->set('nroorden', $datos['nroorden']);
+        $this->db->set('observaciones', $datos['observaciones']);
+        $this->db->set('archivo', $datos['archivo']);
+        $this->db->set('archivoord', $datos['archivoord']);
+        $this->db->insert('Normas');
+        return true;
+    }
+
+    public function edit_normaestructuratematica($numnorma, $tiponorma, $numtematican1, $numtematican2){
+        $this->db->set('numero', $numnorma);
+        $this->db->set('tipo', $tiponorma);
+        $this->db->set('indice1', $numtematican1);
+        $this->db->set('indice2', $numtematican2);
+        $this->db->insert('Normasestructuratematica');
+        return true;
+    }
+
+
     public function insert_norma($datos){
         $this->db->set('numero', $datos['numnorma']);
         $this->db->set('tipo', $datos['tiponorma']);
@@ -60,6 +117,29 @@ class Norma_model extends CI_Model{
         $this->db->set('archivo', $datos['archivo']);
         $this->db->set('archivoord', $datos['archivoord']);
         $this->db->insert('Normas');
+        return true;
+    }
+
+    public function guarda_norma($datos){
+        $this->db->set('numero', $datos['numnorma']);
+        $this->db->set('tipo', $datos['tiponorma']);
+        $this->db->set('expedientechm', $datos['expedientechm']);
+        $this->db->set('expedientedem', $datos['expedientedem']);
+        $this->db->set('fechasancion', $datos['fechasancion']);
+        $this->db->set('fechapromulgacion', $datos['fechapromulgacion']);
+        $this->db->set('origen', $datos['origen']);
+        $this->db->set('autor', $datos['autor']);
+        $this->db->set('contenido', $datos['contenido']);
+        $this->db->set('caracter', $datos['caracter']);
+        $this->db->set('alcance', $datos['alcance']);
+        $this->db->set('nrocaja', $datos['nrocaja']);
+        $this->db->set('nroorden', $datos['nroorden']);
+        $this->db->set('observaciones', $datos['observaciones']);
+        $this->db->set('archivo', $datos['archivo']);
+        $this->db->set('archivoord', $datos['archivoord']);
+        $this->db->where('numero='.$datos['numnorma']);
+        $this->db->where('tipo='.$datos['tiponorma']);
+        $this->db->update('Normas');
         return true;
     }
 
