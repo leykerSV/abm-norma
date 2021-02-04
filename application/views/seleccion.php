@@ -187,13 +187,13 @@
             	Archivo:
                 <input id="archivo" name="archivo" type="file" placeholder="Archivo" class="form-control" value="<?php echo ($this->input->post('archivo') ? $this->input->post('archivo') : $row->archivo); ?>">
                 <?php echo form_error('archivo'); ?>
-                <input id="archivo1" name="archivo1" type="text" placeholder="Archivo" class="form-control" value="<?php echo ($this->input->post('archivo') ? $this->input->post('archivo') : $row->archivo); ?>">
+                <input hidden id="archivo1" name="archivo1" type="text" placeholder="Archivo" class="form-control" value="<?php echo ($this->input->post('archivo') ? $this->input->post('archivo') : $row->archivo); ?>">
             </div>
             <div class="form-group">
             	Archivo Ordenado:
                 <input id="archivoord" name="archivoord" type="file" placeholder="Archivo Ordenanza" class="form-control" value="<?php echo ($this->input->post('archivoord') ? $this->input->post('archivoord') : $row->archivoord); ?>">
                 <?php echo form_error('archivoord'); ?>
-                <input id="archivoord" name="archivoord1" type="text" placeholder="Archivo Ordenanza" class="form-control" value="<?php echo ($this->input->post('archivoord') ? $this->input->post('archivoord') : $row->archivoord); ?>">
+                <input hidden id="archivoord1" name="archivoord1" type="text" placeholder="Archivo Ordenanza" class="form-control" value="<?php echo ($this->input->post('archivoord') ? $this->input->post('archivoord') : $row->archivoord); ?>">
             </div>
 
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>

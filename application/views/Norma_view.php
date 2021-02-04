@@ -90,13 +90,13 @@
 
             <div class="row">
                 <div class="form-group col-sm-6">
-                    <input type=" text" class="form-control" name="fechasancion" placeholder="Fecha de Sancion">
+                    <input type="date" class="form-control" name="fechasancion" placeholder="Fecha de Sancion">
                     <small
                         class="form-text"><?php echo form_error('fechasancion', '<div class="text-danger">', '</div>'); ?></small>
                     
                 </div>
                 <div class="form-group col-sm-6">
-                    <input type=" text" class="form-control" name="fechapromulgacion" placeholder="Fecha de Promulgacion">
+                    <input type="date" class="form-control" name="fechapromulgacion" placeholder="Fecha de Promulgacion">
                     <small
                         class="form-text"><?php echo form_error('fechapromulgacion', '<div class="text-danger">', '</div>'); ?></small>
                     

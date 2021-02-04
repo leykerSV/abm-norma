@@ -37,7 +37,7 @@ class Relacion_controller extends CI_Controller {
             $resp1 = $this->Relacion_model->insert_relacion($_POST);
             echo 'Relacion/es Ingresada con exito';
             echo '<br />';
-            echo '<a href="https://abm-norma.concejosantotome.gob.ar/index.php/relaciones">Volver a la carga de Relaciones</a>';
+            echo '<a href="https://abm-norma.concejosantotome.gob.ar/index.php/relaciones">Volver al inicio de Carga</a>';
         }else{
             $this->index();
         }        
